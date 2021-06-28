@@ -11,8 +11,8 @@ const itemDatabaseCreator = connection.define('item', {
         }
     },
 
-    Valor: {
-        type: sequelize.FLOAT,
+    Amount: {
+        type: sequelize.NUMBER,
         allowNull: false,
         validate: {
             notNull: true,
@@ -20,11 +20,11 @@ const itemDatabaseCreator = connection.define('item', {
         }
     },
 
-    Market: {
+    DateList: {
         type: sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: true,
+            notNull : true,
             notEmpty: true
         }
     }

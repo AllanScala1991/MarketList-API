@@ -31,7 +31,7 @@ class UserService {
             return {"message": "Unknown error, contact administrator", "status": false}
         }
 
-        return {"data": userCreate, "status": true};
+        return { "message": "User created successfully" };
     }
 }
 

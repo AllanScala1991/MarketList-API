@@ -5,6 +5,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(require('./src/controllers/userController'));
 app.use(require('./src/controllers/listController'));
+app.use(require('./src/controllers/itemController'));
 
 
 

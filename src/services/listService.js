@@ -28,7 +28,7 @@ class ListService {
             return {"message": "Unknown error, contact administrator", "status": false}
         }
 
-        return {"data": listCreate, "status": true};
+        return { "message": "List created successfully" };
     }
 
     async deleteList (id) {
