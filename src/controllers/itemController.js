@@ -1,13 +1,14 @@
 const express  = require('express');
 const app = express.Router();
 const bodyParser = require('body-parser');
-const itemService = require('../services/itemService');
 const ItemService = require('../services/itemService');
+const auth = require('../middlewares/authenticatedMiddleware');
+
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/item', async (req, res) => {
+app.get('/item', auth, async (req, res) => {
     const dateList = req.body.dateList;
 
     const getAllItems = new itemService();
@@ -17,7 +18,7 @@ app.get('/item', async (req, res) => {
     return res.send(getItems);
 });
 
-app.get('/item/filter', async (req, res) => {
+app.get('/item/filter', auth, async (req, res) => {
     const itemName = req.body.name;
 
     const getItemsFilter = new ItemService();
@@ -27,7 +28,7 @@ app.get('/item/filter', async (req, res) => {
     return res.send(itemFilter);
 });
 
-app.post('/item', async (req, res) => {
+app.post('/item', auth, async (req, res) => {
     const {name, amount, dateList} = req.body;
 
     const createNewItem = new ItemService();
@@ -37,7 +38,7 @@ app.post('/item', async (req, res) => {
     return res.send(createItem);
 });
 
-app.patch('/item', async (req, res) => {
+app.patch('/item', auth, async (req, res) => {
     const {id, name, amount} = req.body;
 
     const editItemService = new ItemService();
@@ -47,7 +48,7 @@ app.patch('/item', async (req, res) => {
     return res.send(editItem);
 });
 
-app.delete('/item', async (req, res) => {
+app.delete('/item', auth, async (req, res) => {
     const id = req.body.id;
 
     const deleteItemService = new ItemService();
