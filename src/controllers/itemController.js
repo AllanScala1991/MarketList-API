@@ -8,10 +8,10 @@ const auth = require('../middlewares/authenticatedMiddleware');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/item', auth, async (req, res) => {
+app.post('/items', auth, async (req, res) => {
     const dateList = req.body.dateList;
 
-    const getAllItems = new itemService();
+    const getAllItems = new ItemService();
 
     const getItems = await getAllItems.getAllItems(dateList);
 
