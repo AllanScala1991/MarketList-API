@@ -18,7 +18,7 @@ app.post('/items', auth, async (req, res) => {
     return res.send(getItems);
 });
 
-app.get('/item/filter', auth, async (req, res) => {
+app.post('/item/filter', auth, async (req, res) => {
     const itemName = req.body.name;
 
     const getItemsFilter = new ItemService();
