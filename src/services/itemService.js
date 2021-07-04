@@ -10,7 +10,8 @@ class ItemService {
         const itemAlreadyExists = await itemModel.findAll({
             raw: true,
             where: {
-                Name: name
+                Name: name,
+                DateList: dateList
             }
         });
 
